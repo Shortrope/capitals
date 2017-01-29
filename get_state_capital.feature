@@ -33,37 +33,37 @@ Feature: Return the name of the capital city of a state
     When she enters 'capital aRiZonA'
     Then 'Phoenix' should be displayed
 
-  Scenario: JB Sprout enters the state name using two letter state abbreviation in lowercase
+  Scenario: A two letter state abbreviation is entered in lowercase
     Given 
-    When he enters 'capital ar'
+    When 'capital ar' is entered
     Then 'Little Rock' should be displayed
 
-  Scenario: CJ Roids enters the state name using two letter state abbreviation in uppercase
+  Scenario: A two letter state abbreviation is entered in uppercase
     Given 
-    When she enters 'capital CA'
+    When 'capital CA' is entered
     Then 'Sacramento' should be displayed
 
-  Scenario: Dwayne Pipe enters a multiword state name using quotes
+  Scenario: A multiword state name is entered using quotes
     Given 
-    When he enters 'capital "New York"'
+    When 'capital "New York"' is entered
     Then 'Albany' should be displayed
 
-  Scenario: Iona Ford enters a multiword state name and abbreviates the word North with N.
+  Scenario: A multiword state name is entered and the word 'North' is abbreviated with 'N.'
     Given
-    When she enters 'capital "N. Dakota"'
+    When 'capital "N. Dakota"' is entered
     Then 'Bismarck' should be displayed
   
-  Scenario: Iona enters a multiword state name and abbreviates the word South with S.
+  Scenario: A multiword state name is entered and the word 'South' is abbreviated with 'S.'
     Given
     When she enters 'capital "S. Dakota"'
     Then 'Pierre' should be displayed
 
-  Scenario: Russel Sprout enters a multiword state name and does not use quotes
-    Given Russel is forgetful
-    When he enters 'capital New Mexico'
+  Scenario: A multiword state name is entered without quotes
+    Given 
+    When 'capital New Mexico' is entered
     Then display 'New' is not a state. Please check spelling. Multi word state names require quotes.
 
-  Scenario: Emma Roids enters a state name and spells it incorrectly
+  Scenario: An incorrectly spelled state name is entered 
     Given 
-    When she enters 'capital Pensilvania'
+    When 'capital Pensilvania' is entered
     Then display 'Pensilvania' is not a state. Please check spelling. Multi word state names require quotes.
