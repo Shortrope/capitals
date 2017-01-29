@@ -17,7 +17,10 @@ Feature: Return the name of the capital city of a state
   - A mispelled state name will return an error message
     "unknown state: check spelling."
     
-
+  Background:
+    Given the 'capital' utility is executable
+    And is in the environment PATH
+    
   Scenario: Russel Sprout wants to know the name of the capital city of Alabama
     Given Russel Sprout does not care about capitalization of proper names
     When he enters 'capital alabama'
@@ -34,36 +37,36 @@ Feature: Return the name of the capital city of a state
     Then 'Phoenix' should be displayed
 
   Scenario: A two letter state abbreviation is entered in lowercase
-    Given 
+    Given JoJo wants to know the capital of Arkansas
     When 'capital ar' is entered
     Then 'Little Rock' should be displayed
 
   Scenario: A two letter state abbreviation is entered in uppercase
-    Given 
+    Given JoJo wants to know the capital of California
     When 'capital CA' is entered
     Then 'Sacramento' should be displayed
 
   Scenario: A multiword state name is entered using quotes
-    Given 
+    Given JoJo wants to know the capital of New York
     When 'capital "New York"' is entered
     Then 'Albany' should be displayed
 
   Scenario: A multiword state name is entered and the word 'North' is abbreviated with 'N.'
-    Given
+    Given JoJo wants to know the capital of North Dakota
     When 'capital "N. Dakota"' is entered
     Then 'Bismarck' should be displayed
   
   Scenario: A multiword state name is entered and the word 'South' is abbreviated with 'S.'
-    Given
+    Given JoJo wants to know the capital of South Dakota
     When she enters 'capital "S. Dakota"'
     Then 'Pierre' should be displayed
 
   Scenario: A multiword state name is entered without quotes
-    Given 
+    Given JoJo wants to know the capital of New Mexico
     When 'capital New Mexico' is entered
     Then display 'New' is not a state. Please check spelling. Multi word state names require quotes.
 
   Scenario: An incorrectly spelled state name is entered 
-    Given 
+    Given JoJo wants to know the capital of Pennsylvania
     When 'capital Pensilvania' is entered
     Then display 'Pensilvania' is not a state. Please check spelling. Multi word state names require quotes.
