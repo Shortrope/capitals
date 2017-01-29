@@ -26,30 +26,104 @@ Feature: Return the name of the capital city of a state
     When he enters 'capital alabama'
     Then 'Montgomery' should be displayed
 
-  Scenario: Emma Roids wants to know the name of the capital city of Alaska
+  Scenario Outline: Get the name of the capital city of a state using lowercase state name
+    Given Russel wants to know the capital of <state>
+    When he enters 'capital <lowerCaseState>'
+    Then '<capital>' should be displayed
+
+    Examples:
+      | state       | lowerCaseState | capital     |
+      | Alabama     | alabama        | Montgomery  |
+      | Alaska      | alaska         | Juneau      |
+      | Arizona     | arizona        | Phoenix     |
+      | Arkansas    | arkansas       | Little Rock |
+      | California  | california     | Sacramento  |
+      | Colorado    | colorado       | Denver      |
+      | Connecticut | connecticut    | Hartford    |
+      | Delaware    | delaware       | Dover       |
+      | Florida     | florida        | Tallahassee |
+
+  Scenario Outline: Emma Roids wants to know the name of the capital city of Alaska
     Given Emma Roids is anal about proper grammar
-    When she enters 'capital Alaska'
-    Then 'Juneau' should be displayed
+    When she enters 'capital <state>'
+    Then '<capital>' should be displayed
 
-  Scenario: Wendy Wacko wants to know the name of the capital city of Arizona
+    Examples:
+      | state       | capital     |
+      | Alabama     | Montgomery  |
+      | Alaska      | Juneau      |
+      | Arizona     | Phoenix     |
+      | Arkansas    | Little Rock |
+      | California  | Sacramento  |
+      | Colorado    | Denver      |
+      | Connecticut | Hartford    |
+      | Delaware    | Dover       |
+      | Florida     | Tallahassee |
+
+  Scenario Outline: Wendy Wacko wants to know the name of the capital city of Arizona
     Given Wendy Wacko drinks too much vodka with her coffee
-    When she enters 'capital aRiZonA'
-    Then 'Phoenix' should be displayed
+    When she enters 'capital <mixedCaseState>'
+    Then '<capital>' should be displayed
 
-  Scenario: A two letter state abbreviation is entered in lowercase
-    Given JoJo wants to know the capital of Arkansas
-    When 'capital ar' is entered
-    Then 'Little Rock' should be displayed
+    Examples:
+      | mixedCaseState | capital     |
+      | AlaBama        | Montgomery  |
+      | alaSka         | Juneau      |
+      | ARiZONa        | Phoenix     |
+      | ArKANSAS       | Little Rock |
+      | CalifORnIA     | Sacramento  |
+      | cOLOrADo       | Denver      |
+      | CoNNectIcut    | Hartford    |
+      | DelaWAre       | Dover       |
+      | fLoRiDA        | Tallahassee |
 
-  Scenario: A two letter state abbreviation is entered in uppercase
-    Given JoJo wants to know the capital of California
-    When 'capital CA' is entered
-    Then 'Sacramento' should be displayed
+  Scenario Outline: A two letter state abbreviation is entered in lowercase
+    Given JoJo wants to know the capital of a state
+    When 'capital <stateAbbrev>' is entered
+    Then '<capital>' should be displayed
 
-  Scenario: A multiword state name is entered using quotes
+    Examples:
+      | stateAbbrev | capital     |
+      | al          | Montgomery  |
+      | ak          | Juneau      |
+      | az          | Phoenix     |
+      | ar          | Little Rock |
+      | ca          | Sacramento  |
+      | co          | Denver      |
+      | ct          | Hartford    |
+      | de          | Dover       |
+      | fl          | Tallahassee |
+
+  Scenario Outline: A two letter state abbreviation is entered in uppercase
+    Given JoJo wants to know the capital of a state
+    When 'capital <stateAbbrev>' is entered
+    Then '<capital>' should be displayed
+
+    Examples:
+      | stateAbbrev | capital     |
+      | AL          | Montgomery  |
+      | AK          | Juneau      |
+      | AZ          | Phoenix     |
+      | AR          | Little Rock |
+      | CA          | Sacramento  |
+      | CO          | Denver      |
+      | CT          | Hartford    |
+      | DE          | Dover       |
+      | FL          | Tallahassee |
+
+  Scenario Outline: A multiword state name is entered using quotes
     Given JoJo wants to know the capital of New York
-    When 'capital "New York"' is entered
-    Then 'Albany' should be displayed
+    When 'capital "<multiWordState>"' is entered
+    Then '<capital>' should be displayed
+
+    Examples:
+      | multiWordState | capital  |
+      | New Hampshire  | Concord  |
+      | New Jersey     | Trenton  |
+      | New Mexico     | Santa Fe |
+      | New York       | Albany   |
+      | North Carolina | Raleigh  |
+      | North Dakota   | Bismarck |
 
   Scenario: A multiword state name is entered and the word 'North' is abbreviated with 'N.'
     Given JoJo wants to know the capital of North Dakota
