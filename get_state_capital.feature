@@ -1,7 +1,7 @@
 Feature: Return the name of the capital city of a state
 
-  The 'capital' utility should return the name of the capital city of the
-  state name entered as the first argument
+  The 'capital' utility should return the capital city of a state name entered as
+  the first argument
 
   Rules:
   - The state name is case insensitive
